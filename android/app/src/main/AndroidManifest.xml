@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="bankpick"
+        android:label="Bank Pick"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
