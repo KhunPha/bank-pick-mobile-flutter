@@ -1,4 +1,5 @@
 import 'package:bankpick/util/amount_slider_card.dart';
+import 'package:bankpick/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 class MyCardTab extends StatefulWidget {
@@ -40,35 +41,10 @@ class _MyCardTabState extends State<MyCardTab> {
         child: Column(
           children: [
             // Header
-            SizedBox(height: 20),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Center(
-                    child: Text(
-                      "My Cards",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Container(
-                      padding: EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(Icons.add_outlined),
-                    ),
-                  ),
-                ],
-              ),
+            AppBarWidget(
+              title: "My Cards",
+              buttonRight: true,
+              iconDataRight: "assets/search.png",
             ),
 
             SizedBox(height: 20),
@@ -345,7 +321,7 @@ class _MyCardTabState extends State<MyCardTab> {
                             ),
                           ),
                           SizedBox(height: 15),
-                          
+
                           AmountSliderCard(),
                         ],
                       ),

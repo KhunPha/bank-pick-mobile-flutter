@@ -13,10 +13,10 @@ class BankingBottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> navItems = [
-      {"icon": Icons.home_outlined, "label": "Home"},
-      {"icon": Icons.credit_card_outlined, "label": "My Cards"},
-      {"icon": Icons.pie_chart_outline, "label": "Statistics"},
-      {"icon": Icons.settings_outlined, "label": "Settings"},
+      {"icon": "assets/house-chimney.png", "label": "Home"},
+      {"icon": "assets/insert-credit-card.png", "label": "My Cards"},
+      {"icon": "assets/chart-pie-alt.png", "label": "Statistics"},
+      {"icon": "assets/settings.png", "label": "Settings"},
     ];
 
     return Container(
@@ -46,10 +46,10 @@ class BankingBottomNav extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      item["icon"],
+                    Image.asset(
+                      item["icon"]!,
                       color: isSelected ? Colors.blue : Colors.grey[600],
-                      size: 28, // slightly bigger for easier tap
+                      width: 24,
                     ),
                     const SizedBox(height: 4),
                     Text(

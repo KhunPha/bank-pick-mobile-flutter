@@ -1,3 +1,4 @@
+import 'package:bankpick/screens/home_screen.dart';
 import 'package:bankpick/screens/onboard_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => OnboardScreen()),
+        MaterialPageRoute(builder: (_) => HomeScreen()),
       );
     });
   }

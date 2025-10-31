@@ -11,8 +11,8 @@ class _HomeTabState extends State<HomeTab> {
   List<Map<String, String>> paymentButtonData = [
     {"title": "Sent", "image": "assets/up-arrow.png"},
     {"title": "Receive", "image": "assets/down-arrow.png"},
-    {"title": "Load", "image": "assets/personal.png"},
-    {"title": "Topup", "image": "assets/money.png"},
+    {"title": "Loan", "image": "assets/badge-dollar.png"},
+    {"title": "Topup", "image": "assets/money-income.png"},
   ];
 
   List<Map<String, String>> transactionData = [
@@ -97,11 +97,11 @@ class _HomeTabState extends State<HomeTab> {
 
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[300],
+                      color: Colors.grey[200],
                       shape: BoxShape.circle,
                     ),
-                    padding: EdgeInsets.all(10),
-                    child: Icon(Icons.search_outlined),
+                    padding: EdgeInsets.all(12),
+                    child: Image.asset("assets/search.png", width: 20),
                   ),
                 ],
               ),

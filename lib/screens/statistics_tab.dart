@@ -1,4 +1,5 @@
 import 'package:bankpick/util/line_chart.dart';
+import 'package:bankpick/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 class StatisticsTab extends StatefulWidget {
@@ -47,35 +48,10 @@ class _StatisticsTabState extends State<StatisticsTab> {
         child: Column(
           children: [
             // Header
-            SizedBox(height: 20),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Center(
-                    child: Text(
-                      "Statistics",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Container(
-                      padding: EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(Icons.search_outlined),
-                    ),
-                  ),
-                ],
-              ),
+            AppBarWidget(
+              title: "Staistics",
+              buttonRight: true,
+              iconDataRight: "assets/plus.png",
             ),
 
             SizedBox(height: 20),

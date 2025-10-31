@@ -1,3 +1,4 @@
+import 'package:bankpick/screens/profile_screen.dart';
 import 'package:bankpick/screens/setting_tab.dart';
 import 'package:bankpick/util/baking_bottom_nav.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screens[_currentIndex],
+      // body: ProfileScreen(),
       bottomNavigationBar: BankingBottomNav(
         currentIndex: _currentIndex,
         onTap: (index) {
