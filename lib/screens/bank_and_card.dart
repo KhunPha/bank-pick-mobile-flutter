@@ -39,17 +39,53 @@ class _BankAndCardState extends State<BankAndCard> {
                         scrollDirection: Axis.vertical,
                         child: Column(
                           children: [
-                            CardWidget(),
+                            CardWidget(
+                              cardNumber: "4562 1122 4595 7852",
+                              cardHolder: "Lanh Sopha",
+                              expiryDate: "12/2028",
+                              cvv: "123",
+                              cardType: 1,
+                            ),
                             SizedBox(height: 25),
-                            CardWidget(),
+                            CardWidget(
+                              cardNumber: "4562 1122 4595 7852",
+                              cardHolder: "Lanh Sopha",
+                              expiryDate: "12/2028",
+                              cvv: "123",
+                              cardType: 2,
+                            ),
                             SizedBox(height: 25),
-                            CardWidget(),
+                            CardWidget(
+                              cardNumber: "4562 1122 4595 7852",
+                              cardHolder: "Lanh Sopha",
+                              expiryDate: "12/2028",
+                              cvv: "123",
+                              cardType: 2,
+                            ),
                             SizedBox(height: 25),
-                            CardWidget(),
+                            CardWidget(
+                              cardNumber: "4562 1122 4595 7852",
+                              cardHolder: "Lanh Sopha",
+                              expiryDate: "12/2028",
+                              cvv: "123",
+                              cardType: 2,
+                            ),
                             SizedBox(height: 25),
-                            CardWidget(),
+                            CardWidget(
+                              cardNumber: "4562 1122 4595 7852",
+                              cardHolder: "Lanh Sopha",
+                              expiryDate: "12/2028",
+                              cvv: "123",
+                              cardType: 2,
+                            ),
                             SizedBox(height: 25),
-                            CardWidget(),
+                            CardWidget(
+                              cardNumber: "4562 1122 4595 7852",
+                              cardHolder: "Lanh Sopha",
+                              expiryDate: "12/2028",
+                              cvv: "123",
+                              cardType: 2,
+                            ),
                             SizedBox(height: 70),
                           ],
                         ),
@@ -61,7 +97,12 @@ class _BankAndCardState extends State<BankAndCard> {
                       left: 0,
                       right: 0,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddNewCardScreen(),
+                          ),
+                        ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue, // Button color
                           foregroundColor: Colors.white, // Text color
@@ -74,33 +115,25 @@ class _BankAndCardState extends State<BankAndCard> {
                             ), // Optional: rounded corners
                           ),
                         ),
-                        child: GestureDetector(
-                          onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => AddNewCardScreen(),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Add Card",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Add Card",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
 
-                              SizedBox(width: 15),
+                            SizedBox(width: 15),
 
-                              Image.asset(
-                                "assets/plus.png",
-                                width: 15,
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
+                            Image.asset(
+                              "assets/plus.png",
+                              width: 15,
+                              color: Colors.white,
+                            ),
+                          ],
                         ),
                       ),
                     ),

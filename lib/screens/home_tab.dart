@@ -1,3 +1,4 @@
+import 'package:bankpick/screens/send_money_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeTab extends StatefulWidget {
@@ -8,41 +9,57 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  List<Map<String, String>> paymentButtonData = [
-    {"title": "Sent", "image": "assets/up-arrow.png"},
-    {"title": "Receive", "image": "assets/down-arrow.png"},
-    {"title": "Loan", "image": "assets/badge-dollar.png"},
-    {"title": "Topup", "image": "assets/money-income.png"},
+  List<Map<String, dynamic>> paymentButtonData = [
+    {
+      "title": "Sent",
+      "image": "assets/up-arrow.png",
+      "route": SendMoneyScreen(),
+    },
+    {
+      "title": "Receive",
+      "image": "assets/down-arrow.png",
+      "route": SendMoneyScreen(),
+    },
+    {
+      "title": "Loan",
+      "image": "assets/badge-dollar.png",
+      "route": SendMoneyScreen(),
+    },
+    {
+      "title": "Topup",
+      "image": "assets/money-income.png",
+      "route": SendMoneyScreen(),
+    },
   ];
 
-  List<Map<String, String>> transactionData = [
+  List<Map<String, dynamic>> transactionData = [
     {
       "title": "Apple Store",
       "subtitle": "Entertainment",
       "amount": "- \$5.99",
       "icon": "assets/apple.png",
-      "tran_in": "false",
+      "tran_in": false,
     },
     {
       "title": "Spotify",
       "subtitle": "Music",
       "amount": "- \$12.99",
       "icon": "assets/spotify.png",
-      "tran_in": "false",
+      "tran_in": false,
     },
     {
       "title": "Money Tranfer",
       "subtitle": "Transaction",
       "amount": "\$300.00",
       "icon": "assets/import.png",
-      "tran_in": "true",
+      "tran_in": true,
     },
     {
       "title": "Grocery",
       "subtitle": "Shoping",
       "amount": "- \$88.00",
       "icon": "assets/trolley.png",
-      "tran_in": "false",
+      "tran_in": false,
     },
   ];
 
@@ -295,13 +312,21 @@ class _HomeTabState extends State<HomeTab> {
                         children: paymentButtonData.map((item) {
                           return Column(
                             children: [
-                              Container(
-                                padding: EdgeInsets.all(18),
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[200],
-                                  shape: BoxShape.circle,
+                              GestureDetector(
+                                onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => item["route"]!,
+                                  ),
                                 ),
-                                child: Image.asset(item["image"]!, width: 30),
+                                child: Container(
+                                  padding: EdgeInsets.all(18),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey[200],
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Image.asset(item["image"]!, width: 30),
+                                ),
                               ),
                               SizedBox(height: 8),
 
@@ -411,7 +436,7 @@ class _HomeTabState extends State<HomeTab> {
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20,
-                                        color: item["tran_in"] == "false"
+                                        color: item["tran_in"]
                                             ? Colors.black
                                             : Color.fromARGB(255, 42, 120, 255),
                                       ),

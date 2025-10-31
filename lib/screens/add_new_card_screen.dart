@@ -32,7 +32,13 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CardWidget(),
+                    CardWidget(
+                      cardNumber: "4562 1122 4595 7852",
+                      cardHolder: "Lanh Sopha",
+                      expiryDate: "12/2028",
+                      cvv: "123",
+                      cardType: 2,
+                    ),
                     const SizedBox(height: 30),
                     Text(
                       "Cardholder Name",

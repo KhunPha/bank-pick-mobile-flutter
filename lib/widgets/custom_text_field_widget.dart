@@ -7,44 +7,47 @@ class CustomTextFieldWidget extends StatelessWidget {
     required this.hint,
     this.obscureText = false,
     this.suffixIcon,
+    this.showBorder = true,
+    this.textSize = 16,
+    this.isPadding = true, // new boolean
   });
 
   final String? icon;
   final String hint;
   final bool obscureText;
   final String? suffixIcon;
+  final bool showBorder;
+  final double textSize;
+  final bool isPadding; // control padding
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 4),
+      padding: isPadding
+          ? EdgeInsets.symmetric(vertical: 8, horizontal: 12)
+          : EdgeInsets.zero,
       decoration: BoxDecoration(
-        // color: Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border(bottom: BorderSide(color: Colors.grey[200]!, width: 1)),
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Colors.grey.withOpacity(0.3),
-        //     blurRadius: 5,
-        //     offset: Offset(0, 1),
-        //   ),
-        // ],
+        border: showBorder
+            ? Border(bottom: BorderSide(color: Colors.grey[200]!, width: 1))
+            : null,
       ),
       child: Row(
         children: [
           if (icon != null)
             Image.asset(icon!, color: Colors.grey[500], width: 20),
-
-          if (icon != null)
-            const SizedBox(
-              width: 15,
-            ), // works because Column arranges vertically
+          if (icon != null) const SizedBox(width: 15),
           Expanded(
             child: TextField(
               obscureText: obscureText,
+              style: TextStyle(fontSize: textSize),
               decoration: InputDecoration(
                 hintText: hint,
+                hintStyle: TextStyle(fontSize: textSize, color: Colors.grey),
                 border: InputBorder.none,
+                contentPadding: isPadding
+                    ? EdgeInsets.symmetric(vertical: 12, horizontal: 10)
+                    : EdgeInsets.zero,
               ),
             ),
           ),
