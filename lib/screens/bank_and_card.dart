@@ -99,8 +99,37 @@ class _BankAndCardState extends State<BankAndCard> {
                       child: ElevatedButton(
                         onPressed: () => Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => AddNewCardScreen(),
+                          PageRouteBuilder(
+                            transitionDuration: const Duration(
+                              milliseconds: 400,
+                            ),
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    AddNewCardScreen(),
+                            transitionsBuilder:
+                                (
+                                  context,
+                                  animation,
+                                  secondaryAnimation,
+                                  child,
+                                ) {
+                                  const begin = Offset(
+                                    1.0,
+                                    0.0,
+                                  ); // slide from right
+                                  const end = Offset.zero;
+                                  const curve = Curves.easeOutCubic;
+
+                                  final tween = Tween(
+                                    begin: begin,
+                                    end: end,
+                                  ).chain(CurveTween(curve: curve));
+
+                                  return SlideTransition(
+                                    position: animation.drive(tween),
+                                    child: child,
+                                  );
+                                },
                           ),
                         ),
                         style: ElevatedButton.styleFrom(

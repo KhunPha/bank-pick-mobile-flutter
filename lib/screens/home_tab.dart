@@ -1,3 +1,4 @@
+import 'package:bankpick/screens/loan_screen.dart';
 import 'package:bankpick/screens/send_money_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,7 @@ class _HomeTabState extends State<HomeTab> {
     {
       "title": "Loan",
       "image": "assets/badge-dollar.png",
-      "route": SendMoneyScreen(),
+      "route": LoanScreen(),
     },
     {
       "title": "Topup",
@@ -134,7 +135,7 @@ class _HomeTabState extends State<HomeTab> {
                   children: [
                     // Card
                     Padding(
-                      padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
+                      padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Container(
                         width: double.infinity,
                         padding: EdgeInsets.all(20),
@@ -315,8 +316,40 @@ class _HomeTabState extends State<HomeTab> {
                               GestureDetector(
                                 onTap: () => Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) => item["route"]!,
+                                  PageRouteBuilder(
+                                    transitionDuration: const Duration(
+                                      milliseconds: 400,
+                                    ),
+                                    pageBuilder:
+                                        (
+                                          context,
+                                          animation,
+                                          secondaryAnimation,
+                                        ) => item["route"]!,
+                                    transitionsBuilder:
+                                        (
+                                          context,
+                                          animation,
+                                          secondaryAnimation,
+                                          child,
+                                        ) {
+                                          const begin = Offset(
+                                            1.0,
+                                            0.0,
+                                          ); // slide from right
+                                          const end = Offset.zero;
+                                          const curve = Curves.easeOutCubic;
+
+                                          final tween = Tween(
+                                            begin: begin,
+                                            end: end,
+                                          ).chain(CurveTween(curve: curve));
+
+                                          return SlideTransition(
+                                            position: animation.drive(tween),
+                                            child: child,
+                                          );
+                                        },
                                   ),
                                 ),
                                 child: Container(

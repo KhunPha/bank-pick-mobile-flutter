@@ -62,7 +62,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
               functionLeft: () => Navigator.pop(context),
               functionRight: () => Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => EditProfileScreen()),
+                PageRouteBuilder(
+                  transitionDuration: const Duration(milliseconds: 400),
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      EditProfileScreen(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                        const begin = Offset(1.0, 0.0); // slide from right
+                        const end = Offset.zero;
+                        const curve = Curves.easeOutCubic;
+
+                        final tween = Tween(
+                          begin: begin,
+                          end: end,
+                        ).chain(CurveTween(curve: curve));
+
+                        return SlideTransition(
+                          position: animation.drive(tween),
+                          child: child,
+                        );
+                      },
+                ),
               ),
             ),
 
@@ -123,8 +143,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           return GestureDetector(
                             onTap: () => Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => item["route"],
+                              PageRouteBuilder(
+                                transitionDuration: const Duration(
+                                  milliseconds: 400,
+                                ),
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        item["route"]!,
+                                transitionsBuilder:
+                                    (
+                                      context,
+                                      animation,
+                                      secondaryAnimation,
+                                      child,
+                                    ) {
+                                      const begin = Offset(
+                                        1.0,
+                                        0.0,
+                                      ); // slide from right
+                                      const end = Offset.zero;
+                                      const curve = Curves.easeOutCubic;
+
+                                      final tween = Tween(
+                                        begin: begin,
+                                        end: end,
+                                      ).chain(CurveTween(curve: curve));
+
+                                      return SlideTransition(
+                                        position: animation.drive(tween),
+                                        child: child,
+                                      );
+                                    },
                               ),
                             ),
                             child: Container(

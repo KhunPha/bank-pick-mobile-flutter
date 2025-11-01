@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BirthDatePicker extends StatefulWidget {
-  const BirthDatePicker({super.key});
+  const BirthDatePicker({super.key, required this.title});
+  final String title;
 
   @override
   State<BirthDatePicker> createState() => _BirthDatePickerState();
@@ -32,8 +33,8 @@ class _BirthDatePickerState extends State<BirthDatePicker> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "Birth Date",
+        Text(
+          widget.title,
           style: TextStyle(
             color: Colors.grey,
             fontSize: 16,

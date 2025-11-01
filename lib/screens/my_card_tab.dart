@@ -1,3 +1,4 @@
+import 'package:bankpick/screens/add_new_card_screen.dart';
 import 'package:bankpick/util/amount_slider_card.dart';
 import 'package:bankpick/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,31 @@ class _MyCardTabState extends State<MyCardTab> {
             AppBarWidget(
               title: "My Cards",
               buttonRight: true,
-              iconDataRight: "assets/search.png",
+              iconDataRight: "assets/plus.png",
+              functionRight: () => Navigator.push(
+                context,
+                PageRouteBuilder(
+                  transitionDuration: const Duration(milliseconds: 400),
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      AddNewCardScreen(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                        const begin = Offset(1.0, 0.0); // slide from right
+                        const end = Offset.zero;
+                        const curve = Curves.easeOutCubic;
+
+                        final tween = Tween(
+                          begin: begin,
+                          end: end,
+                        ).chain(CurveTween(curve: curve));
+
+                        return SlideTransition(
+                          position: animation.drive(tween),
+                          child: child,
+                        );
+                      },
+                ),
+              ),
             ),
 
             SizedBox(height: 20),
@@ -58,7 +83,7 @@ class _MyCardTabState extends State<MyCardTab> {
                   children: [
                     // Card
                     Padding(
-                      padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
+                      padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Container(
                         width: double.infinity,
                         padding: EdgeInsets.all(20),

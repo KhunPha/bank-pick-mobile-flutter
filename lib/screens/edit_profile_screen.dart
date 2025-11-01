@@ -123,7 +123,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
                             SizedBox(height: 8),
 
-                            const BirthDatePicker(),
+                            BirthDatePicker(title: "Birth Date"),
                           ],
                         ),
                       ],

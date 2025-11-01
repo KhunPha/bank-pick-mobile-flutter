@@ -1,3 +1,5 @@
+import 'package:bankpick/screens/change_password_screen.dart';
+import 'package:bankpick/screens/language_screen.dart';
 import 'package:bankpick/screens/profile_screen.dart';
 import 'package:bankpick/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +20,7 @@ class _SettingTabState extends State<SettingTab> {
           "title": "Language",
           "display": "English",
           "icon": "assets/",
-          "route": ProfileScreen(),
+          "route": LanguageScreen(),
         },
         {
           "title": "My Profile",
@@ -41,7 +43,7 @@ class _SettingTabState extends State<SettingTab> {
           "title": "Change Password",
           "display": "",
           "icon": "assets/",
-          "route": ProfileScreen(),
+          "route": ChangePasswordScreen(),
         },
         {
           "title": "Privacy Policy",
@@ -108,8 +110,40 @@ class _SettingTabState extends State<SettingTab> {
                                 onTap: () => {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                      builder: (context) => subItem["route"],
+                                    PageRouteBuilder(
+                                      transitionDuration: const Duration(
+                                        milliseconds: 400,
+                                      ),
+                                      pageBuilder:
+                                          (
+                                            context,
+                                            animation,
+                                            secondaryAnimation,
+                                          ) => subItem["route"]!,
+                                      transitionsBuilder:
+                                          (
+                                            context,
+                                            animation,
+                                            secondaryAnimation,
+                                            child,
+                                          ) {
+                                            const begin = Offset(
+                                              1.0,
+                                              0.0,
+                                            ); // slide from right
+                                            const end = Offset.zero;
+                                            const curve = Curves.easeOutCubic;
+
+                                            final tween = Tween(
+                                              begin: begin,
+                                              end: end,
+                                            ).chain(CurveTween(curve: curve));
+
+                                            return SlideTransition(
+                                              position: animation.drive(tween),
+                                              child: child,
+                                            );
+                                          },
                                     ),
                                   ),
                                 },

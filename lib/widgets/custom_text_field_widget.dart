@@ -27,7 +27,6 @@ class CustomTextFieldWidget extends StatelessWidget {
           ? EdgeInsets.symmetric(vertical: 8, horizontal: 12)
           : EdgeInsets.zero,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
         border: showBorder
             ? Border(bottom: BorderSide(color: Colors.grey[200]!, width: 1))
             : null,

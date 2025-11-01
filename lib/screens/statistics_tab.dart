@@ -51,7 +51,7 @@ class _StatisticsTabState extends State<StatisticsTab> {
             AppBarWidget(
               title: "Staistics",
               buttonRight: true,
-              iconDataRight: "assets/plus.png",
+              iconDataRight: "assets/search.png",
             ),
 
             SizedBox(height: 20),
